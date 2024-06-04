@@ -1,13 +1,13 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -19,6 +19,28 @@ const config = {
     },
     extend: {
       colors: {
+        colorOne: "var(--color-one)",
+        colorOneLight: "var(--color-one-light)",
+        colorTwo: "var(--color-two)",
+        colorTwoLight: "var(--color-two-light)",
+        colorThree: "var(--color-three)",
+        colorThreeLight: "var(--color-three-light)",
+        colorFour: "var(--color-four)",
+        colorFourLight: "var(--color-four-light)",
+        colorFive: "var(--color-five)",
+        colorFiveLight: "var(--color-five-light)",
+
+        textbold: "var(--textbold)",
+        textlight: "var(--textlight)",
+
+        whiteblack: "var(--white-black)",
+
+        themeforeground: "var(--theme-foreground)",
+        themebackground: "var(--theme-background)",
+
+        themelight: "var(--theme-light)",
+        theme: "var(--theme)",
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -75,6 +97,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
