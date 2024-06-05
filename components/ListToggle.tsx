@@ -98,7 +98,7 @@ function AddList({ setDropdownOpen }: AddListProps) {
   const { setActiveList } = useActiveList();
   const { listData, setListData } = useListData();
   const [listName, setListName] = React.useState<string>("");
-  const [farmLevel, setFarmLevel] = React.useState<string>("");
+  const [farmLevel, setFarmLevel] = React.useState<number | null>(null);
   const [isOpen, setIsOpen] = React.useState(false);
 
   const addList = () => {
@@ -129,7 +129,7 @@ function AddList({ setDropdownOpen }: AddListProps) {
     const updatedListData = [...listData, newList];
     setListData(updatedListData);
     setListName("");
-    setFarmLevel("");
+    setFarmLevel(null);
     setActiveList(listName);
     setIsOpen(false);
     setDropdownOpen(false);
@@ -165,8 +165,8 @@ function AddList({ setDropdownOpen }: AddListProps) {
               Farm Level
             </Label>
             <Input
-              value={farmLevel}
-              onChange={(e) => setFarmLevel(e.target.value)}
+              value={farmLevel ? farmLevel.toString() : ""}
+              onChange={(e) => setFarmLevel(Number(e.target.value))}
               type="number"
               className="flex-grow"
               placeholder="Enter Farm Level"
@@ -190,8 +190,9 @@ function UpdateList({ setDropdownOpen, listName, farmLevel }: UpdateListProps) {
 
   const [updatedListName, setUpdatedListName] =
     React.useState<string>(listName);
-  const [updatedFarmLevel, setUpdatedFarmLevel] =
-    React.useState<string>(farmLevel);
+  const [updatedFarmLevel, setUpdatedFarmLevel] = React.useState<number | null>(
+    farmLevel
+  );
   const [isOpen, setIsOpen] = React.useState(false);
 
   const updateList = () => {
@@ -226,7 +227,7 @@ function UpdateList({ setDropdownOpen, listName, farmLevel }: UpdateListProps) {
     });
 
     setListData(updatedListData);
-    setUpdatedFarmLevel("");
+    setUpdatedFarmLevel(null);
     setUpdatedListName("");
     if (activeList === listName) setActiveList(updatedListName);
     setIsOpen(false);
@@ -265,8 +266,8 @@ function UpdateList({ setDropdownOpen, listName, farmLevel }: UpdateListProps) {
               Farm Level
             </Label>
             <Input
-              value={updatedFarmLevel}
-              onChange={(e) => setUpdatedFarmLevel(e.target.value)}
+              value={updatedFarmLevel ? updatedFarmLevel.toString() : ""}
+              onChange={(e) => setUpdatedFarmLevel(Number(e.target.value))}
               type="number"
               className="flex-grow"
               placeholder="Enter Farm Level"
