@@ -1,7 +1,22 @@
+export interface SelectedItem {
+  name: string | null;
+  price: number | null;
+  quantity: number | null;
+  multiplier: number | null;
+  type: string | null;
+}
+
+export interface SelectItemProps {
+  defaultMultiplier: string;
+  selectedItem: SelectedItem | null;
+  setSelectedItem: React.Dispatch<React.SetStateAction<SelectedItem | null>>;
+  quantityRef: React.RefObject<HTMLInputElement>;
+}
+
 export interface ListData {
   listName: string;
-  farmLevel: string;
-  items: Object[];
+  farmLevel: number;
+  items: SelectedItem[];
 }
 
 export interface AddListProps {
@@ -10,7 +25,7 @@ export interface AddListProps {
 
 export interface UpdateListProps {
   listName: string;
-  farmLevel: string;
+  farmLevel: number;
   setDropdownOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
